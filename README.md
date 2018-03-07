@@ -7,7 +7,7 @@
 1.	Python2 (tested with 2.7)
 2.	MAFFT v7
 3.	glsearch36 (https://github.com/wrpearson/fasta36) This is part of fasta36 suite and one of the installed programs is called "glsearch36"
-4.	numpy 
+4.	numpy  
 MAFFT and glsearch36 must be in path and callable by "mafft" and "glsearch36" on the terminal.
 
 ##### aacorrection.py (+AA barcodes)
@@ -15,33 +15,33 @@ MAFFT and glsearch36 must be in path and callable by "mafft" and "glsearch36" on
 2.	Biopython (tested with v 1.69)
 3.	MAFFT v7
 4.	BLAST+ (tested with 2.2+, 2.6+, 2.7+ 
-5.	(If BLAST output and corresponding accession fasta does not exist) Preferably: a local copy of the NT database. Alternatively, you can use blastn -remote option to run commandline blast on NCBI server, but this may not be as fast. If relying on -remote option, then ensure your BLAST is updated. Also note that for frequent use Entrez email should be provided. 
+5.	(If BLAST output and corresponding accession fasta does not exist) Preferably: a local copy of the NT database. Alternatively, you can use blastn -remote option to run commandline blast on NCBI server, but this may not be as fast. If relying on -remote option, then ensure your BLAST is updated. Also note that for frequent use Entrez email should be provided.  
 “mafft”, “blastn” should be in path and callable from terminal. If local nt is used “blastdbcmd” should be callable from terminal, available as part of BLAST+
 
 ##### RACON correction: 
-This worked in Ubuntu but we couldn’t get it to work in Mac OS 10.12.6  (we couldn’t install racon).
+This worked in Ubuntu but we couldn’t get it to work in Mac OS 10.12.6  (we couldn’t install racon).  
  
 1)	graphmap (https://github.com/isovic/graphmap)  (v0.5.2) (released currently with racon). v0.3 gave errors.
-2)	racon (https://github.com/isovic/racon) 
+2)	racon (https://github.com/isovic/racon)  
 Both can be installed by: 
 ```
 git clone https://github.com/isovic/racon.git && cd racon && make modules && make tools && make -j  
 export PATH=$PATH:$PWD/bin
 export PATH=$PATH:$PWD/tools/graphmap/bin/Linux-x64
 ```
-These must be installed and in path  and calling “graphmap” and “racon” in terminal should not throw an error.  
+These must be installed and in path  and calling “graphmap” and “racon” in terminal should not throw an error.   
 
 
-DETAILS
+### DETAILS  
 
 ##### miniBarcoder.py : Script for obtaining MAFFT barcodes
 
-This script performs the various steps from primer finding, demultiplexing, read alignment and consensus calling. 
+This script performs the various steps from primer finding, demultiplexing, read alignment and consensus calling.  
 
-For the purpose of the is pipeline, please avoid putting “;” in specimen name. 
-Output is stored in outpudirectory/ 
+For the purpose of the is pipeline, please avoid putting “;” in specimen name.  
+Output is stored in outpudirectory/  
 
-Basic usage for 658 bp barcode (100 reads used): 
+Basic usage for 658 bp barcode (100 reads used):  
 ```
 python miniBarcoder.py –f inputfasta –d demultiplexingfile –o outputdirectory –l 600
 ```
@@ -84,9 +84,9 @@ Arguments:
 
 ```
 ##### aacorrection.py : Script for correcting barcodes using conserved amino acids 
-Basic usage for 658 bp COI 
+Basic usage for 658 bp COI  
 
-MODE 1: Existing BLAST output and accession fasta file 
+MODE 1: Existing BLAST output and accession fasta file  
 ```
 python aacorrection.py –b input_uncorrected_barcode_fasta –bf blast_accession_fasta_file –bo  blastout_output file –o outputfilename
 ``` 
@@ -144,13 +144,13 @@ arguments:
                         reading frames,default=2
 
 ```
-Other scripts: 
+Other scripts:  
 ##### run_racon_consensus.sh : Batch script performing fastq retrieval, graphmap and racon
-Usage:  
+Usage:   
 ```
 sh racon_consensus.sh input_fastq_for_all_data input_fasta_for_all_data outputfolder_of_minibarcoder mafft_barcodes_obtained_by_minibarcoder outputdirectory
 ```
-##### consolidate.py: Get consensus barcode of MAFFT+AA and RACON+AA barcode.
+##### consolidate.py: Get consensus barcode of MAFFT+AA and RACON+AA barcode.  
 
 usage: 
 ```
@@ -173,7 +173,7 @@ python consolidate.py –m mafft_aa_barcodefile –r racon_aa_barcodefile –o o
 ```
 python filter_by_Ns.py -i input_barcode_fasta -n number of ambiguities
 ```
-Output is stored in *Nfilter.fasta 
+Output is stored in *Nfilter.fasta  
 ```
   -h, --help            show this help message and exit
   -i INFILE, --infile INFILE
