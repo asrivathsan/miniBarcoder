@@ -1,16 +1,16 @@
 # miniBarcoder
-### Given the multiple steps in the pipeline, we have written out the steps for obtaining barcodes for datasets A,B, and C for our manuscript. Please refer to Steps to Operate the pipeline document.
+##### Given the multiple steps in the pipeline, we have written out the steps for obtaining barcodes for datasets A,B, and C for our manuscript. Please refer to Steps to Operate the pipeline document.
 
-### REQUIREMENTS: This has been tested on Ubuntu and MacOS 10.12.6.
+##### REQUIREMENTS: This has been tested on Ubuntu and MacOS 10.12.6.
 
-### miniBarcoder.py (MAFFT barcodes)
+##### miniBarcoder.py (MAFFT barcodes)
 1.	Python2 (tested with 2.7)
 2.	MAFFT v7
 3.	glsearch36 (https://github.com/wrpearson/fasta36) This is part of fasta36 suite and one of the installed programs is called "glsearch36"
 4.	numpy
 MAFFT and glsearch36 must be in path and callable by "mafft" and "glsearch36" on the terminal.
 
-### aacorrection.py (+AA barcodes)
+##### aacorrection.py (+AA barcodes)
 1.	Python2 (tested with 2.7)
 2.	Biopython (tested with v 1.69)
 3.	MAFFT v7
@@ -18,7 +18,7 @@ MAFFT and glsearch36 must be in path and callable by "mafft" and "glsearch36" on
 5.	(If BLAST output and corresponding accession fasta does not exist) Preferably: a local copy of the NT database. Alternatively, you can use blastn -remote option to run commandline blast on NCBI server, but this may not be as fast. If relying on -remote option, then ensure your BLAST is updated. Also note that for frequent use Entrez email should be provided.
 “mafft”, “blastn” should be in path and callable from terminal. If local nt is used “blastdbcmd” should be callable from terminal, available as part of BLAST+
 
-### RACON correction: 
+##### RACON correction: 
 This worked in Ubuntu but we couldn’t get it to work in Mac OS 10.12.6  (we couldn’t install racon).
  
 1)	graphmap (https://github.com/isovic/graphmap)  (v0.5.2) (released currently with racon). v0.3 gave errors.
@@ -33,7 +33,7 @@ These must be installed and in path  and calling “graphmap” and “racon” 
 
 DETAILS
 
-### miniBarcoder.py : Script for obtaining MAFFT barcodes
+##### miniBarcoder.py : Script for obtaining MAFFT barcodes
 
 This script performs the various steps from primer finding, demultiplexing, read alignment and consensus calling. 
 
@@ -82,7 +82,7 @@ Arguments:
                         only, please keep it slightly shorter than actual barcode length, as                                insertion errors can make this run into primers, default 300
 
 ```
-### aacorrection.py : Script for correcting barcodes using conserved amino acids
+##### aacorrection.py : Script for correcting barcodes using conserved amino acids
 Basic usage for 658 bp COI
 
 MODE 1: Existing BLAST output and accession fasta file
@@ -144,12 +144,12 @@ arguments:
 
 ```
 Other scripts:
-### run_racon_consensus.sh. This is batch script with performs the following steps. Names here are for Dataset A.
+##### run_racon_consensus.sh. This is batch script with performs the following steps. Names here are for Dataset A.
 Usage: 
 ```
 sh racon_consensus.sh input_fastq_for_all_data input_fasta_for_all_data outputfolder_of_minibarcoder mafft_barcodes_obtained_by_minibarcoder outputdirectory
 ```
-### consolidate.py: Get consensus barcode of MAFFT+AA and RACON+AA barcode.
+##### consolidate.py: Get consensus barcode of MAFFT+AA and RACON+AA barcode.
 
 usage:
 ```
@@ -168,7 +168,7 @@ python consolidate.py –m mafft_aa_barcodefile –r racon_aa_barcodefile –o o
                         output directory
 ```
 
-### filter_by_Ns.py: filter barcode fasta file to remove sequences with lots of ambiguities
+##### filter_by_Ns.py: filter barcode fasta file to remove sequences with lots of ambiguities
 ```
 python filter_by_Ns.py -i input_barcode_fasta -n number of ambiguities
 ```
@@ -181,7 +181,7 @@ Output is stored in *Nfilter.fasta
                         Number of ambiguities allowed
 
 ```
-### assess_corrbarcodes_wref.py: Compare corrected barcodes with reference barcodes to measure accuracy.
+##### assess_corrbarcodes_wref.py: Compare corrected barcodes with reference barcodes to measure accuracy.
 ```
   -h, --help            show this help message and exit
   -m MINIONFASTA, --minionfasta MINIONFASTA
@@ -194,7 +194,7 @@ Output is stored in *Nfilter.fasta
                         Path to output file containing statistics
 ```
 
-### assess_corrbarcodes_wref.py: Compare uncorrected barcodes with reference barcodes to measure accuracy.
+##### assess_corrbarcodes_wref.py: Compare uncorrected barcodes with reference barcodes to measure accuracy.
 ```
   -h, --help            show this help message and exit
   -m MINIONFASTA, --minionfasta MINIONFASTA
@@ -206,7 +206,7 @@ Output is stored in *Nfilter.fasta
   -o OUTFILE, --outfile OUTFILE
                         Path to output file containing statistics
 ```
-### measure_ambs.py: Measures number of “N” in input non-interleaved barcode fastafile
+##### measure_ambs.py: Measures number of “N” in input non-interleaved barcode fastafile
 ```
 python measure_ambs.py input_barcode_fasta
 ```
