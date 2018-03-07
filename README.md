@@ -1,5 +1,5 @@
 # miniBarcoder
-##### Given the multiple steps in the pipeline, we have written out the steps for obtaining barcodes for datasets A,B, and C for our manuscript. Please refer to Steps to Operate the pipeline document.
+##### Given the multiple steps in the pipeline, we have written out the steps for obtaining barcodes for datasets A,B, and C for our manuscript. Easiest way to get a handle on the pipeline is to test it out on one of these datasets as described in Steps to operate the pipeline document.
 
 ##### REQUIREMENTS: This has been tested on Ubuntu and MacOS 10.12.6.
 
@@ -144,7 +144,7 @@ arguments:
 
 ```
 Other scripts:
-##### run_racon_consensus.sh. This is batch script with performs the following steps. Names here are for Dataset A.
+##### run_racon_consensus.sh : Batch script performing fastq retrieval, graphmap and racon
 Usage: 
 ```
 sh racon_consensus.sh input_fastq_for_all_data input_fasta_for_all_data outputfolder_of_minibarcoder mafft_barcodes_obtained_by_minibarcoder outputdirectory
