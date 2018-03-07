@@ -1,6 +1,8 @@
 # miniBarcoder
 ##### Given the multiple steps in the pipeline, we have written out the steps for obtaining barcodes for datasets A,B, and C for our manuscript. Easiest way to get a handle on the pipeline is to test it out on one of these datasets as described in Steps to operate the pipeline document.
 
+In order to run Racon correction, both FASTQ and FASTA files are required as Racon requires quality score information: the order of the sequences must be same in the 2 files. This can be simply obtained if fasta is generated from FASTQ using tools such as fq2fa.
+
 ##### REQUIREMENTS: This has been tested on Ubuntu and MacOS 10.12.6.
 
 ##### miniBarcoder.py (MAFFT barcodes)
