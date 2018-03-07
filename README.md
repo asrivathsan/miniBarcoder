@@ -6,7 +6,7 @@
 ##### miniBarcoder.py (MAFFT barcodes)
 1.	Python2 (tested with 2.7)
 2.	MAFFT v7
-3.	glsearch36 (https://github.com/wrpearson/fasta36) This is part of fasta36 suite and one of the installed programs is called "glsearch36"
+3.	glsearch36 (https://github.com/wrpearson/fasta36) This is part of fasta36 suite and one of the installed programs is "glsearch36"
 4.	numpy  
 MAFFT and glsearch36 must be in path and callable by "mafft" and "glsearch36" on the terminal.
 
@@ -14,7 +14,7 @@ MAFFT and glsearch36 must be in path and callable by "mafft" and "glsearch36" on
 1.	Python2 (tested with 2.7)
 2.	Biopython (tested with v 1.69)
 3.	MAFFT v7
-4.	BLAST+ (tested with 2.2+, 2.6+, 2.7+ 
+4.	BLAST+ (tested with 2.2+, 2.6+, 2.7+)
 5.	(If BLAST output and corresponding accession fasta does not exist) Preferably: a local copy of the NT database. Alternatively, you can use blastn -remote option to run commandline blast on NCBI server, but this may not be as fast. If relying on -remote option, then ensure your BLAST is updated. Also note that for frequent use Entrez email should be provided.  
 “mafft”, “blastn” should be in path and callable from terminal. If local nt is used “blastdbcmd” should be callable from terminal, available as part of BLAST+
 
@@ -211,3 +211,12 @@ Output is stored in *Nfilter.fasta
 ```
 python measure_ambs.py input_barcode_fasta
 ```
+
+## Contact Information
+For bugs, queries and other issues, please contact Amrita Srivathsan, asrivathsan@gmail.com
+
+## Funding
+This project was funded by Southeast Asian Biodiversity Genomics Centre (SEABIG), NUS and ASTAR
+
+## Publication
+The publication associated is currently in preprint server: https://doi.org/10.1101/253625
