@@ -1,0 +1,29 @@
+Files:
+Steps to operate the pipeline.docx : Manual
+
+DatasetA:
+
+1. A_demultfile.csv : Demultiplexing file for DatasetA
+2. A_N055.fasta: Complete fasta file for DatasetA
+3. A_N055.fastq: Complete fastq file for DatasetA
+4. DatasetA_Sanger_references.fas: Sanger references for DatasetA
+5. 1_A_MAFFT_barcode_all_nt_megablast: megablast output of MAFFT barcodes used for amino acid correction
+6. 1_A_MAFFT_barcode_all_nt_megablast.fasta: Accession fasta retrieved from 1_A_MAFFT_barcode_all_nt_megablast
+
+DatasetB:
+
+1. B_demultfile.csv: Demultiplexing file for DatasetA
+2. B_N052.fasta: Complete fasta file for DatasetB
+3. B_N052.fastq: Complete fastq file for DatasetB
+4. REFERENCE_B_f.fasta: Illumina references for DatasetB, end1
+5. REFERENCE_B_r.fasta: Illumina references for DatasetB, end2
+6. 1_B_MAFFT_barcode_all_nt_megablast: megablast output of MAFFT barcodes used for amino acid correction
+7. 1_B_MAFFT_barcode_all_nt_megablast.fasta: Accession fasta retrieved from 1_B_MAFFT_barcode_all_nt_megablast
+
+DatasetC:
+C_demultfile.csv: Demultiplexing file for DatasetC
+C_N030.fasta: Complete fasta file for DatasetC
+C_N030.fastq: Complete fastq file for DatasetB
+DatasetC_References_illumina.fasta: Illumina references for DatasetC
+1_C_MAFFT_barcode_all_nt_megablast: megablast output of MAFFT barcodes used for amino acid correction
+1_C_MAFFT_barcode_all_nt_megablast.fasta: Accession fasta retrieved from 1_C_MAFFT_barcode_all_nt_megablast
