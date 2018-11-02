@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import argparse,os
 parser=argparse.ArgumentParser(description='Script for splitting barcodes to separate fasta for graphmap')
 parser.add_argument('-i','--infasta',help='Path to input racon corrected barcode fasta file',dest="infasta",required=True)
