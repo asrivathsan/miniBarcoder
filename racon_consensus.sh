@@ -1,7 +1,10 @@
+#!/usr/bin/env bash
+VAR=$(dirname "$(which racon_consensus.sh)")
+
 fasta_nopath="${2##*/}";
 mkdir $5;
-python scripts/get_fastqs.py -fq $1 -dr $3/temp_alls -se "$3"/"$fasta_nopath"_reformat_out_COIpred -o $5/"$fasta_nopath"_dem_fastqs
-python scripts/split_fasta_to_each.py -i $4 -o $5/"$fasta_nopath"_for_graphmap
+python "$VAR"/scripts/get_fastqs.py -fq $1 -dr $3/temp_alls -se "$3"/"$fasta_nopath"_reformat_out_COIpred -o $5/"$fasta_nopath"_dem_fastqs
+python "$VAR"/scripts/split_fasta_to_each.py -i $4 -o $5/"$fasta_nopath"_for_graphmap
 
 for f in $5/"$fasta_nopath"_for_graphmap/*; 
 do 
