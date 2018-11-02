@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import sys, os,argparse
 parser=argparse.ArgumentParser(description='Script for getting fastq after demultiplexing')
 parser.add_argument('-fq','--infastq',help='Path to input fastq file',dest="infastq",required=True)
