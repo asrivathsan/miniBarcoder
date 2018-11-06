@@ -24,7 +24,7 @@ MAFFT and glsearch36 must be in path and callable by "mafft" and "glsearch36" on
 This worked in Ubuntu but we couldn’t get it to work in Mac OS 10.12.6  (we couldn’t install racon).  
  
 1)	graphmap (https://github.com/isovic/graphmap)  (v0.5.2) (released currently with racon). v0.3 gave errors.
-2)	racon (https://github.com/isovic/racon)  
+2)	racon (https://github.com/isovic/racon) : v1.3.1
 Both can be installed by: 
 ```
 git clone https://github.com/isovic/racon.git && cd racon && make modules && make tools && make -j  
