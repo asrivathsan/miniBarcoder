@@ -13,6 +13,6 @@ echo $nops
 nops="${nops%.fa*}";
 echo $nops
 graphmap align --max-error 0.05 -r $f -d $5/"$fasta_nopath"_dem_fastqs/"$nops".fastq -o $5/"$fasta_nopath"_dem_fastqs/"${f##*/}".sam;
-racon --sam $5/"$fasta_nopath"_dem_fastqs/"$nops".fastq $5/"$fasta_nopath"_dem_fastqs/"${f##*/}".sam $f $5/"$fasta_nopath"_dem_fastqs/"${f##*/}"_racon.fasta;
-cat $5/"$fasta_nopath"_dem_fastqs/*racon.fasta | sed 's/Consensus_//g' > "$5".fa;
+racon $5/"$fasta_nopath"_dem_fastqs/"$nops".fastq $5/"$fasta_nopath"_dem_fastqs/"${f##*/}".sam "$f">$5/"$fasta_nopath"_dem_fastqs/"${f##*/}"_racon.fasta;
 done
+cat $5/"$fasta_nopath"_dem_fastqs/*racon.fasta | sed 's/Consensus_//g' > "$5".fa;
