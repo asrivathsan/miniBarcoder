@@ -152,11 +152,12 @@ for i,j in enumerate(lens[:-1]):
 	print parts
 	p=Pool(nthreads)
 	p.map(runparts,parts)
+	p.close()
 	n+=nthreads
 parts=partlist[lens[-1]:]
-p.close()
 p=Pool(nthreads)
-p.map(runparts,parts)	
+p.map(runparts,parts)
+p.close()
 
 callconsensus(args.indir+"/demultiplexed_uniqs_mafft/"+name,0.5,5,args.indir+"/demultiplexed_uniqs_mafft_consensus/"+name.split(".")[0]+"_consensus.fa",name)
 
