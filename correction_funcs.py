@@ -307,6 +307,9 @@ def runcorrection(mseq,refseqset,orseq,gencode,winlen):
 			refgappos,flag=identify_ref_gaps(refcodonset,flag,winlen)
 			# modify sliding window based on gap position: if 
 			temprefcodonset=[]
+			if flag==2:
+				if len(refgappos)>4:
+					break
 			if flag==1:
 				for num in range((winlen+2)*3,(winlen*2+1)*3+3):
 					if num in gappos:
