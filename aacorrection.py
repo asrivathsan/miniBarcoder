@@ -1,3 +1,4 @@
+#!/usr/bin/env python 
 import sys,os,fileinput,argparse
 import correction_funcs as corr
 from distutils.spawn import find_executable

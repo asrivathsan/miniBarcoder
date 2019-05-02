@@ -1,0 +1,2 @@
+include *.txt *.fasta
+recursive-include examples *.txt *.py

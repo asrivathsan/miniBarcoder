@@ -1,3 +1,4 @@
+#!/usr/bin/env python 
 # minibarcoder: a pipeline for BLAST based read identifications
 
 # Copyright 2017 Amrita Srivathsan
@@ -570,21 +571,24 @@ if __name__ == '__main__':
 	p=Pool(nthreads)
 	p.map(runglsearch1,parts)	
 
-	partlist2=fnmatch.filter(os.listdir(args.outdir), prefix2+"*")
-	print partlist2
-	n=0
-#	runglsearch2(partlist2[0])
-	lens=range(0,len(partlist2),nthreads)
-#	if len(partlist)%nthreads!=0:
-	for i,j in enumerate(lens[:-1]):
-		print "Processing parts "+str(n) +" to "+str(n+nthreads-1)
-		parts=partlist2[j:lens[i+1]]
+	try:
+		partlist2=fnmatch.filter(os.listdir(args.outdir), prefix2+"*")
+		print partlist2
+		n=0
+	#	runglsearch2(partlist2[0])
+		lens=range(0,len(partlist2),nthreads)
+	#	if len(partlist)%nthreads!=0:
+		for i,j in enumerate(lens[:-1]):
+			print "Processing parts "+str(n) +" to "+str(n+nthreads-1)
+			parts=partlist2[j:lens[i+1]]
+			p=Pool(nthreads)
+			p.map(runglsearch2,parts)
+			n+=nthreads
+		parts=partlist2[lens[-1]:]
 		p=Pool(nthreads)
 		p.map(runglsearch2,parts)
-		n+=nthreads
-	parts=partlist2[lens[-1]:]
-	p=Pool(nthreads)
-	p.map(runglsearch2,parts)		
+	except IndexError:
+		pass
 
 
 	os.system("mv "+args.outdir+"/*all.fa "+ args.outdir+"/demultiplexed")

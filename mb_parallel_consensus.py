@@ -1,3 +1,4 @@
+#!/usr/bin/env python 
 import sys,os,fileinput,re,time,numpy,argparse,random,fnmatch,multiprocessing
 from distutils.spawn import find_executable
 from multiprocessing import Pool
@@ -158,8 +159,8 @@ parts=partlist[lens[-1]:]
 p=Pool(nthreads)
 p.map(runparts,parts)
 p.close()
-
-callconsensus(args.indir+"/demultiplexed_uniqs_mafft/"+name,0.5,5,args.indir+"/demultiplexed_uniqs_mafft_consensus/"+name.split(".")[0]+"_consensus.fa",name)
+for name in dirlist:
+	callconsensus(args.indir+"/demultiplexed_uniqs_mafft/"+name+"_aln.fasta",0.5,5,args.indir+"/demultiplexed_uniqs_mafft_consensus/"+name.split(".")[0]+"_consensus.fa",name)
 
 
 os.system("cat "+args.indir+"/demultiplexed_uniqs_mafft_consensus/* > " + args.indir+"/all_barcodes.fa")

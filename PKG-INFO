@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: minibarcoder
+Version: 2.0
+Summary: a pipeline for obtaining barcodes from MinION raw reads
+Home-page: https://github.com/asrivathsan/minibarcoder
+Author: Amrita Srivathsan
+Author-email: asrivathsan@gmail.com
+License: GPL v3
+Description: UNKNOWN
+Platform: UNKNOWN
