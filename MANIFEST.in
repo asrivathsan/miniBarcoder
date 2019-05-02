@@ -1,2 +1,3 @@
 include *.txt *.fasta
+include testfiles/*
 recursive-include examples *.txt *.py
