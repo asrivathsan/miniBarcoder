@@ -527,7 +527,7 @@ if __name__ == '__main__':
 				if len(line1.strip())!=0:
 					seqid=">"+str(n)+'\n'
 			 		sequence=line2.strip()
-			 		if len(sequence)>minlen:
+			 		if len(sequence)>=minlen:
 			 			outfile.write(seqid+line2)
 					n+=1
 
