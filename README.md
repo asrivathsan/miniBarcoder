@@ -25,7 +25,8 @@ cd testfiles
 mb_parallel_demultiplex.py -d demfile_2.txt -l 600 -o testout -f test.fasta
 mb_parallel_consensus.py -i testout
 mv testout/all_barcodes.fa test_mafft_barcode.fa
-racon_consensus.py -i testout -d racon_out -o test_racon.fa -b test_mafft_barcode.fa
+filter_by_Ns.py -n 6 -i test_mafft_barcode.fa
+racon_consensus.py -i testout -d racon_out -o test_racon.fa -b test_mafft_barcode_Nfilter.fa
 aacorrection.py -b test_mafft_barcode_Nfilter.fa -bo test_barcodes_megablast.txt -bf test_barcodes_megablast.fasta -o test_mafft_barcode_aacorr.fa
 aacorrection.py -b test_racon.fa -bo test_barcodes_megablast.txt -bf test_barcodes_megablast.fasta -o test_racon_barcode_aacorr.fa
 consolidate.py -m test_mafft_barcode_aacorr.fa -r test_racon_barcode_aacorr.fa -t con_temp -o test_consolidate.fa
