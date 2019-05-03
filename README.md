@@ -1,7 +1,9 @@
 # miniBarcoder (currently undergoing updates, please avoid till this message disappears)
 
 
-### To make it easier for installing dependencies, we would recommend setting up using conda:
+### To make it easier for installing dependencies, we would recommend setting up using conda (
+
+get Miniconda here: https://docs.conda.io/en/latest/miniconda.html, this pipeline is written in Python 2.7
 
 ```
 conda config --add channels bioconda
