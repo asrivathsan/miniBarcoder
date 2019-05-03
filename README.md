@@ -21,7 +21,7 @@ Alternatively, if dependencies are being installed separately, you can just use 
 ### To test the pipeline, with the recent updates use the following. This works if setup.py install has been done. Else call each as a python script, i.e. python mb_parallel_demultiplex.py ... 
 
 ```
-cd testing
+cd testfiles
 mb_parallel_demultiplex.py -d demfile_2.txt -l 600 -o testout -f test.fasta
 mb_parallel_consensus.py -i testout
 mv testout/all_barcodes.fa test_mafft_barcode.fa
