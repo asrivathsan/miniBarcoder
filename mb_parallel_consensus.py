@@ -106,7 +106,7 @@ def callconsensus(i,perc_thresh,abs_thresh,o,name):
 		conseq=consensus(seqdict,perc_thresh,abs_thresh)
 		conseq=conseq.replace("-",'')
 		if len(conseq)!=0:
-			with open(o,'w') as outfile:
+			with open(o,'a') as outfile:
 				outfile.write(">"+name.split(".")[0]+";"+str(len(conseq))+";"+str(len(seqdict.keys()))+'\n'+conseq+'\n')
 def subset_randomly (infile,outfile,n):
 	with open(infile) as fulldata:
@@ -160,7 +160,7 @@ p=Pool(nthreads)
 p.map(runparts,parts)
 p.close()
 for name in dirlist:
-	callconsensus(args.indir+"/demultiplexed_uniqs_mafft/"+name+"_aln.fasta",0.5,5,args.indir+"/demultiplexed_uniqs_mafft_consensus/"+name.split(".")[0]+"_consensus.fa",name)
+	callconsensus(args.indir+"/demultiplexed_uniqs_mafft/"+name+"_aln.fasta",0.5,5,args.indir+"/all.barcodes.fa",name)
 
 
-os.system("cat "+args.indir+"/demultiplexed_uniqs_mafft_consensus/* > " + args.indir+"/all_barcodes.fa")
+

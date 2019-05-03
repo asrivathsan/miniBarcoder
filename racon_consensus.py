@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import argparse,os
+import argparse,os,sys
 parser=argparse.ArgumentParser(description='Script for obtaining racon barcodes')
 parser.add_argument('-i','--indir',help='output folder path of mb_parallel_demultiplex',dest="indir",required=True)
 parser.add_argument('-b','--barcodefile',help='input barcode set',dest="barcodefile",required=True)
@@ -22,7 +22,5 @@ with open(args.barcodefile) as infile:
 dirlist=os.listdir(args.outdir)
 for f in dirlist:
 	os.system("graphmap align --max-error 0.15 -r "+args.outdir+"/"+f+" -d "+ args.indir+"/demultiplexed/"+f+" -o "+args.outdir+"/"+f.split(".")[0]+".sam")
-	os.system("racon "+args.indir+"/demultiplexed/"+f+" "+args.outdir+"/"+f.split(".")[0]+".sam " +args.outdir+"/"+f+">"+args.outdir+"/"+f.split(".")[0]+"_racon.fasta")
-
-os.system("cat "+args.outdir+"/*racon.fasta > "+args.outfile)
+	os.system("racon "+args.indir+"/demultiplexed/"+f+" "+args.outdir+"/"+f.split(".")[0]+".sam " +args.outdir+"/"+f+">>"+args.outfile)
 

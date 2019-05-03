@@ -562,14 +562,16 @@ if __name__ == '__main__':
 	lens=range(0,len(partlist1),nthreads)
 #	if len(partlist)%nthreads!=0:
 	for i,j in enumerate(lens[:-1]):
-		print "Processing parts "+str(n) +" to "+str(n+nthreads-1)
+		print "Processing parts "+str(n) +" to "+str(n+nthreads-1)+ " of " + str(len(partlist1))
 		parts=partlist1[j:lens[i+1]]
 		p=Pool(nthreads)
 		p.map(runglsearch1,parts)
 		n+=nthreads
+		p.close()
 	parts=partlist1[lens[-1]:]
 	p=Pool(nthreads)
-	p.map(runglsearch1,parts)	
+	p.map(runglsearch1,parts)
+	p.close()	
 
 	try:
 		partlist2=fnmatch.filter(os.listdir(args.outdir), prefix2+"*")
@@ -579,14 +581,16 @@ if __name__ == '__main__':
 		lens=range(0,len(partlist2),nthreads)
 	#	if len(partlist)%nthreads!=0:
 		for i,j in enumerate(lens[:-1]):
-			print "Processing parts "+str(n) +" to "+str(n+nthreads-1)
+			print "Processing parts "+str(n) +" to "+str(n+nthreads-1) + " of " + str(len(partlist2))
 			parts=partlist2[j:lens[i+1]]
 			p=Pool(nthreads)
 			p.map(runglsearch2,parts)
+			p.close()
 			n+=nthreads
 		parts=partlist2[lens[-1]:]
 		p=Pool(nthreads)
 		p.map(runglsearch2,parts)
+		p.close()
 	except IndexError:
 		pass
 
