@@ -160,7 +160,7 @@ p=Pool(nthreads)
 p.map(runparts,parts)
 p.close()
 for name in dirlist:
-	callconsensus(args.indir+"/demultiplexed_uniqs_mafft/"+name+"_aln.fasta",0.5,5,args.indir+"/all.barcodes.fa",name)
+	callconsensus(args.indir+"/demultiplexed_uniqs_mafft/"+name+"_aln.fasta",0.5,5,args.indir+"/all_barcodes.fa",name)
 
 
 
