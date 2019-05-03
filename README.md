@@ -39,7 +39,7 @@ seqtk seq -A fastqfile > fastafile
 
 ```
 
-# Other details on scripts for quality assessments such as assess_corrbarcodes_wref.py are given below if you would like to compare minion barcodes with reference barcodes. 
+##### Other details on scripts for quality assessments such as assess_corrbarcodes_wref.py are given below if you would like to compare minion barcodes with reference barcodes. 
 
 
 
