@@ -1,7 +1,54 @@
-# miniBarcoder
+# miniBarcoder (currently undergoing updates, please avoid till this message disappears)
+
+
+### To make it easier for installing dependencies, we would recommend setting up using conda:
+
+```
+conda config --add channels bioconda
+conda create -n mbconda python=2.7 mafft racon graphmap blast seqtk git fasta3
+conda activate mbconda
+conda install -c anaconda biopython 
+
+git clone https://github.com/asrivathsan/miniBarcoder/
+cd miniBarcoder
+python setup.py install 
+
+```
+Alternatively, if dependencies are being installed separately, you can just use the scripts directly, or proceed from "git clone " onwards. 
+
+### To test the pipeline, with the recent updates use the following. This works if setup.py install has been done. Else call each as a python script, i.e. python mb_parallel_demultiplex.py ... 
+
+```
+cd testing
+mb_parallel_demultiplex.py -d demfile_2.txt -l 600 -o testout -f test.fasta
+mb_parallel_consensus.py -i testout
+mv testout/all_barcodes.fa test_mafft_barcode.fa
+racon_consensus.py -i testout -d racon_out -o test_racon.fa -b test_mafft_barcode.fa
+aacorrection.py -b test_mafft_barcode_Nfilter.fa -bo test_barcodes_megablast.txt -bf test_barcodes_megablast.fasta -o test_mafft_barcode_aacorr.fa
+aacorrection.py -b test_racon.fa -bo test_barcodes_megablast.txt -bf test_barcodes_megablast.fasta -o test_racon_barcode_aacorr.fa
+consolidate.py -m test_mafft_barcode_aacorr.fa -r test_racon_barcode_aacorr.fa -t con_temp -o test_consolidate.fa
+
+
+
+If fasta file is not available:
+
+seqtk seq -A fastqfile > fastafile
+
+
+```
+
+# Other details on scripts for quality assessments such as assess_corrbarcodes_wref.py are given below if you would like to compare minion barcodes with reference barcodes. 
+
+
+
+##### LEGACY minibarcoder.py associated with doi: 10.1111/1755-0998.12890
+
+
 ##### Given the multiple steps in the pipeline, we have written out the steps for obtaining barcodes for datasets A,B, and C for our manuscript. Easiest way to get a handle on the pipeline is to test it out on one of these datasets as described in Steps to operate the pipeline document.
 
 In order to run Racon correction, both FASTQ and FASTA files are required as Racon requires quality score information: the order of the sequences must be same in the 2 files. This can be simply obtained if fasta is generated from FASTQ using tools such as fq2fa.
+
+
 
 ##### REQUIREMENTS: This has been tested on Ubuntu and MacOS 10.12.6.
 
