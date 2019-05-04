@@ -1,5 +1,4 @@
-# miniBarcoder (currently undergoing updates, please avoid till this message disappears)
-
+# miniBarcoder 
 
 ### To make it easier for installing dependencies, we would recommend setting up using conda (
 
