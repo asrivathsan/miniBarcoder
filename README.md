@@ -36,6 +36,11 @@ If fasta file is not available:
 
 seqtk seq -A fastqfile > fastafile
 
+If BLAST output file not available for aacorrection.py
+aacorrection.py -b test_mafft_barcode_Nfilter.fa -d /path/to/nt -o test_mafft_barcode_aacorr.fa
+
+
+
 
 ```
 
