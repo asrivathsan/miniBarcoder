@@ -39,7 +39,14 @@ seqtk seq -A fastqfile > fastafile
 If BLAST output file not available for aacorrection.py
 aacorrection.py -b test_mafft_barcode_Nfilter.fa -d /path/to/nt -o test_mafft_barcode_aacorr.fa
 
-
+In a few computers, we are experience issues with racon obtained from bioconda, if this happens: please compile directly from github
+git clone --recursive https://github.com/isovic/racon.git racon
+cd racon
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+cp build/bin/racon ~/miniconda2/envs/mbconda/bin/racon
 
 
 ```
