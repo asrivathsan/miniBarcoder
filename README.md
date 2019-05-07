@@ -14,6 +14,15 @@ git clone https://github.com/asrivathsan/miniBarcoder/
 cd miniBarcoder
 python setup.py install 
 
+Please run the test files for the pipeline. In a few computers, we are experience issues with racon obtained from bioconda, if this happens: please compile directly from github
+git clone --recursive https://github.com/isovic/racon.git racon
+cd racon
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+cp build/bin/racon ~/miniconda2/envs/mbconda/bin/racon
+
 ```
 Alternatively, if dependencies are being installed separately, you can just use the scripts directly, or proceed from "git clone " onwards. 
 
