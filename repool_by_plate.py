@@ -1,10 +1,18 @@
 #!/usr/bin/env python 
-# usage is repool_by_plate.py inputrepoolingsheet outputexcelfilename coverage_minimum coverage_maximum
-import sys,csv,xlwt,math
+import sys,csv,xlwt,math,argparse
 #style = xlwt.easyxf('pattern: pattern solid, fore_colour 0x7')
-style = xlwt.easyxf('pattern: pattern solid, fore_colour 0x22')
-o=open(sys.argv[1])
-l=o.readlines()
+
+parser=argparse.ArgumentParser(description='Script for repooling low coverage data')
+parser.add_argument('-i','--infile',help='input tab delimited file see example',dest="infile",required=True)
+parser.add_argument('-o','--output',help='prefix for excel outputfile',dest="outfile",required=True)
+parser.add_argument('-m','--min',help='minimum coverage',dest="min",required=True)
+parser.add_argument('-M','--max',help='minimum coverage',dest="max",required=True)
+parser.add_argument('-c','--colour',help='colour to highlight cells ',dest="colour",default="0x22")
+args=parser.parse_args()
+
+style = xlwt.easyxf('pattern: pattern solid, fore_colour '+args.colour)
+infile=open(args.infile)
+l=infile.readlines()
 
 p={}
 for each in l:
@@ -24,7 +32,7 @@ def platebuilder(platelist):
 	outlist=[]
 	while n<8:
 		t=[]
-		for each in range(n,95,8):
+		for each in range(n,96,8):
 			try:
 				t.append(platelist[each])
 			except IndexError:
@@ -48,11 +56,11 @@ for each in p.keys():
 	for i,j in enumerate(eachlist):
 		for u,v in enumerate(j):
 			value=int(v.split(":")[1])
-			if value <=int(sys.argv[4]) and value >=int(sys.argv[3]):
+			if value <=int(args.max) and value >=int(args.min):
 				sheet.write(i,u,v,style)
 			else:
 				sheet.write(i,u,v)
-wb.save(sys.argv[2]+".xls")
+wb.save(args.outfile+".xls")
 #	for i in eachlist:
 #		o.write('\t'.join(i)+'\n')
 #	o.close()
