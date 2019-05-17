@@ -1,4 +1,5 @@
 #!/usr/bin/env python 
+# usage is repool_by_plate.py inputrepoolingsheet outputexcelfilename coverage_minimum coverage_maximum
 import sys,csv,xlwt,math
 #style = xlwt.easyxf('pattern: pattern solid, fore_colour 0x7')
 style = xlwt.easyxf('pattern: pattern solid, fore_colour 0x22')
