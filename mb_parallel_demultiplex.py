@@ -432,9 +432,9 @@ def runglsearchperfile(infile, start,end):
 	for pf in primerfset:
 		with open(args.outdir+"/"+infile+"_primerf.fa",'w') as outfile:
 			outfile.write(">primerf\n"+pf+'\n')
-		cmd="glsearch36 -3 -m 8 -E "+args.evalue+" -T 1 "+args.outdir+"/"+infile+"_primerf.fa"+" "+args.outdir+"/"+searchfilefirst100+ " > "+args.outdir+"/"+searchfilefirst100+"_glsearchF"
+		cmd="glsearch36 -n -3 -m 8 -E "+args.evalue+" -T 1 "+args.outdir+"/"+infile+"_primerf.fa"+" "+args.outdir+"/"+searchfilefirst100+ " > "+args.outdir+"/"+searchfilefirst100+"_glsearchF"
 		os.system(cmd)
-		cmd="glsearch36 -i -m 8 -E "+args.evalue+" -T 1 "+args.outdir+"/"+infile+"_primerf.fa"+" "+args.outdir+"/"+searchfilelast100 + " > "+args.outdir+"/"+searchfilelast100+"_glsearchR"
+		cmd="glsearch36 -n -i -m 8 -E "+args.evalue+" -T 1 "+args.outdir+"/"+infile+"_primerf.fa"+" "+args.outdir+"/"+searchfilelast100 + " > "+args.outdir+"/"+searchfilelast100+"_glsearchR"
 		os.system(cmd)
 		os.system("cat " +args.outdir+"/"+searchfilefirst100+"_glsearchF "+args.outdir+"/"+searchfilelast100+"_glsearchR>" +args.outdir+"/"+infile+"_"+pf+"_glsearch1")
 		parse_by_id(args.outdir+"/"+infile+"_"+pf+"_glsearch1",int(args.gaps))
@@ -464,7 +464,7 @@ def runglsearchperfile(infile, start,end):
 	for pr in primerrset:
 		with open(args.outdir+"/"+infile+"_primerr.fa",'w') as outfile:
 			outfile.write(">primerr\n"+pr+'\n')
-		cmd="glsearch36 -i -m 8 -E "+args.evalue+" -T 1 "+args.outdir+"/"+infile+"_primerr.fa"+" "+args.outdir+"/"+searchfilelast100+" > "+args.outdir+"/"+infile+"_"+pr+"_glsearchR"
+		cmd="glsearch36 -n -i -m 8 -E "+args.evalue+" -T 1 "+args.outdir+"/"+infile+"_primerr.fa"+" "+args.outdir+"/"+searchfilelast100+" > "+args.outdir+"/"+infile+"_"+pr+"_glsearchR"
 		os.system(cmd)
 		parse_by_id(args.outdir+"/"+infile+"_"+pr+"_glsearchR",int(args.gaps))
 		parseglsearch_primermatchR(args.outdir+"/"+infile+"_"+pr+"_glsearchR.parsed.lencutoff5",inputseqs,start,end)	
