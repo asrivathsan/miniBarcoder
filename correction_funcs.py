@@ -219,7 +219,7 @@ def identify_ref_gaps(refset,flag,winlen):
 		for n,bp in enumerate(each):
 			if bp=="-":
 				if n not in refgappos:
-					refgappos.append(n)	
+					refgappos.append(n)
 	if len(refgappos)>0 and len(refset)>=5:
 		for pos in refgappos:
 			if pos in range(1,winlen*3+3):
@@ -296,6 +296,7 @@ def runcorrection(mseq,refseqset,orseq,gencode,winlen):
 			c3set=mseq[i:refend]
 		else:
 			c3set=mseq[i:]
+		print refcodonset
 		if c3set.replace("-","")=="":
 			break
 
@@ -307,6 +308,7 @@ def runcorrection(mseq,refseqset,orseq,gencode,winlen):
 			refgappos,flag=identify_ref_gaps(refcodonset,flag,winlen)
 			# modify sliding window based on gap position: if 
 			temprefcodonset=[]
+			print flag
 			if flag==2:
 				if len(refgappos)>4:
 					break
@@ -339,7 +341,7 @@ def runcorrection(mseq,refseqset,orseq,gencode,winlen):
 				for each in refseqset:
 					nrefseqset.append(each[:i+min(refgappos)]+each[i+max(refgappos)+1:])
 				refseqset=nrefseqset
-				orseq=orseq[:i+min(refgappos)]+each[i+max(refgappos)+1:]
+				orseq=orseq[:i+min(refgappos)]+orseq[i+max(refgappos)+1:]
 				if i==len(mseq)-(winlen+1)*3:
 					newseq+=con
 				else:
@@ -362,6 +364,10 @@ def runcorrection(mseq,refseqset,orseq,gencode,winlen):
 			mseq=mseq.replace(c3set,con)
 		else:
 			i+=3
+	print newseq
+	if "*" in Seq(newseq,generic_dna).translate(table=gencode,to_stop=False).__str__():
+		newseq=newseq[:Seq(newseq,generic_dna).translate(table=gencode,to_stop=False).__str__().find('*')*3]+"nnn"+newseq[Seq(newseq,generic_dna).translate(table=5,to_stop=False).__str__().find('*')*3+3:]
+	print newseq
 	return newseq,orseq,nrefseqset
 def check_alignment(inlist,support):
 	aligned_refs=[]
