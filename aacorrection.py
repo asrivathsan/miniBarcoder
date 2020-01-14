@@ -290,6 +290,7 @@ if __name__ == '__main__':
 				l=infile.readlines()
 				seqid=l[0]
 				if l[1].upper().count("N")<=len(l[1].strip().replace("-",""))*float(args.nambs) and len(l[1].replace("-","").strip())<int(args.maxlen) and len(l[1].replace("-","").strip())>int(args.minlen) and "-"*int(args.congaps) not in l[1]:
+					print l
 					seqset,retainflag=corr.check_alignment(l,int(args.support))					
 					maxlen=0
 			#		print seqset
