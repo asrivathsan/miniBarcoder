@@ -67,12 +67,14 @@ with open(args.raconb) as rfile:
 		if ">" in line:
 			raconbarcodes[line.split(";")[0][1:].strip()]=l[i+1].strip()
 print raconbarcodes.keys()
+rejectlist=[]
+rejectout=open(args.temp+"/rejects.txt",'w')
 with open(args.outfile,'w') as outfile:	
 	for barcode in mafftbarcodes:
 		if barcode in raconbarcodes:
 			with open(args.temp+"/"+barcode,'w') as ofile:
 				ofile.write(">"+barcode+'\n'+mafftbarcodes[barcode]+'\n'+">"+barcode+'\n'+raconbarcodes[barcode]+'\n')
-			os.system("mafft "+args.temp+"/"+barcode+">"+args.temp+"/"+barcode+"_mafft")
+			os.system("mafft --op 3 "+args.temp+"/"+barcode+">"+args.temp+"/"+barcode+"_mafft")
 			reformat(args.temp+"/"+barcode+"_mafft",args.temp+"/"+barcode+"_mafftreformat")
 			with open(args.temp+"/"+barcode+"_mafftreformat") as infile:
 				l=infile.readlines()
@@ -84,6 +86,9 @@ with open(args.outfile,'w') as outfile:
 					if "-" not in r:
 						conbarcode=get_consensus(m,r)
 						outfile.write(">"+barcode+'\n'+conbarcode+'\n')
+					else:
+						rejectout.write(barcode+'\n')
 				else:
-					print barcode
+					rejectout.write(barcode+'\n')
+
 		
