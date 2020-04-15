@@ -4,17 +4,31 @@
 
 get Miniconda here: https://docs.conda.io/en/latest/miniconda.html, this pipeline is written in Python 2.7
 
+A simple installation script has been written for executing all steps till 
+
+
+
+
+```
+
+source minibarcoder_install.sh <new_conda_env_name> <path_to_directory_for_cloning_minibarcoder>
+```
+
+Alternatively one can run the following commands
+
 ```
 conda config --add channels bioconda
-conda create -n mbconda python=2.7 mafft racon graphmap blast seqtk git fasta3
+conda create -n mbconda python=2.7 mafft racon graphmap=0.5.2 blast seqtk git fasta3
 conda activate mbconda
 conda install -c anaconda biopython 
 
 git clone https://github.com/asrivathsan/miniBarcoder/
 cd miniBarcoder
 python setup.py install 
+```
+In a few computers, we are experience issues with racon obtained from bioconda, if this happens: please compile directly from github
 
-Please run the test files for the pipeline. In a few computers, we are experience issues with racon obtained from bioconda, if this happens: please compile directly from github
+```
 git clone --recursive https://github.com/isovic/racon.git racon
 cd racon
 mkdir build
@@ -25,6 +39,8 @@ cp build/bin/racon ~/miniconda2/envs/mbconda/bin/racon
 
 ```
 Alternatively, if dependencies are being installed separately, you can just use the scripts directly, or proceed from "git clone " onwards. 
+
+Before proceeding with standard use, Please run the test files for the pipeline. 
 
 ### To test the pipeline, with the recent updates use the following. This works if setup.py install has been done. Else call each as a python script, i.e. python mb_parallel_demultiplex.py ... 
 
