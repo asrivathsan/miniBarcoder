@@ -388,7 +388,7 @@ def cleantagfile(infile):
 			for n,line in enumerate(taglines):
 				if ">" in line:
 					ids.append(line)
-					seqs[line]=modseq(taglines[n+1])[-14:]
+					seqs[line]=modseq(taglines[n+1])[-(taglen+1):]
 
 			idcounts=Counter(ids)
 			nseqs=0
