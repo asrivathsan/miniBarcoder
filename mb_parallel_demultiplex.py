@@ -410,8 +410,8 @@ def runglsearch2(infile):
 	with open(args.outdir+"/"+infile+"1",'w') as outfile1:
 			with open(args.outdir+"/"+infile+"2",'w') as outfile2:
 				for each in inputseqs.keys():
-					outfile1.write(">"+each+'p1\n'+inputseqs[each][0:-650]+'\n')
-					outfile2.write(">"+each+'p2\n'+inputseqs[each][650:]+'\n')
+					outfile1.write(">"+each+'p1\n'+inputseqs[each][0:-int(args.slen)]+'\n')
+					outfile2.write(">"+each+'p2\n'+inputseqs[each][int(args.slen):]+'\n')
 	runglsearchperfile(infile+"1",100,500)
 	runglsearchperfile(infile+"2",100,500)
 
