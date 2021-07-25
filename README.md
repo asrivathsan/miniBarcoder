@@ -307,4 +307,4 @@ For bugs, queries and other issues, please contact Amrita Srivathsan, asrivathsa
 This project was funded by Southeast Asian Biodiversity Genomics Centre (SEABIG), NUS and ASTAR
 
 ## Publication
-The publication associated is currently in preprint server: https://doi.org/10.1101/253625
+The publication associated is: http://dx.doi.org/10.1111/1755-0998.12890
